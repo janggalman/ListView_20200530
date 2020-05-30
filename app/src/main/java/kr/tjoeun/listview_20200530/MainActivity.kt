@@ -2,11 +2,17 @@ package kr.tjoeun.listview_20200530
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+import kr.tjoeun.listview_20200530.adapters.StudentAdapter
 import kr.tjoeun.listview_20200530.datas.Student
 
 class MainActivity : AppCompatActivity() {
 
     val students = ArrayList<Student>()
+    // onCreate 실행된 이후에 내용을 채워야함.
+//    변수는 멤버변수로 만드어두면 차후에 편리함.
+//    만드는건 지금 만들지만, 채우는건 나중에 하겠다 => Lateinit
+    lateinit var studentAdapter:StudentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,5 +27,8 @@ class MainActivity : AppCompatActivity() {
         students.add(Student("이승원", 1978, true))
         students.add(Student("이현호", 1981, true))
 
+        studentAdapter = StudentAdapter(this, R.layout.student_list_item, students)
+
+        studentListView.adapter =studentAdapter
     }
 }
