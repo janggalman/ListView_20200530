@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
 //            빼낸 학생 정보를 이용해서 토스트로 출력
             val clickedStudent = students.get(position)
-            Toast.makeText(this, clickedStudent.name , Toast.LENGTH_SHORT)
+            Toast.makeText(this, clickedStudent.name , Toast.LENGTH_SHORT).show()
 
             val myIntent = Intent(this, ViewStudentActivity::class.java)
             myIntent.putExtra("student" , clickedStudent)
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         studentListView.setOnItemLongClickListener { parent, view, position, id ->
 
-//            Toast.makeText(this,"${position} 번 롱클릭", Toast.LENGTH_SHORT)
+            Toast.makeText(this,"${position} 번 롱클릭", Toast.LENGTH_SHORT).show()
 
             students.removeAt(position)
             studentAdapter.notifyDataSetChanged()
