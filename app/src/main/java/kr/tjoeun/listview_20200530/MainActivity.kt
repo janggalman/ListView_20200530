@@ -29,22 +29,6 @@ class MainActivity : AppCompatActivity() {
         students.add(Student("엄곤지", 1984, false))
         students.add(Student("이승원", 1978, true))
         students.add(Student("이현호", 1981, true))
-        students.add(Student("조경진", 1988, true))
-        students.add(Student("김광철", 1966, true))
-        students.add(Student("김재환", 1993, true))
-        students.add(Student("박수정", 1994, false))
-        students.add(Student("신용성", 1988, true))
-        students.add(Student("엄곤지", 1984, false))
-        students.add(Student("이승원", 1978, true))
-        students.add(Student("이현호", 1981, true))
-        students.add(Student("조경진", 1988, true))
-        students.add(Student("김광철", 1966, true))
-        students.add(Student("김재환", 1993, true))
-        students.add(Student("박수정", 1994, false))
-        students.add(Student("신용성", 1988, true))
-        students.add(Student("엄곤지", 1984, false))
-        students.add(Student("이승원", 1978, true))
-        students.add(Student("이현호", 1981, true))
 
         studentAdapter = StudentAdapter(this, R.layout.student_list_item, students)
 
@@ -63,6 +47,17 @@ class MainActivity : AppCompatActivity() {
             myIntent.putExtra("student" , clickedStudent)
             startActivity(myIntent)
 
+        }
+
+        studentListView.setOnItemLongClickListener { parent, view, position, id ->
+
+//            Toast.makeText(this,"${position} 번 롱클릭", Toast.LENGTH_SHORT)
+
+            students.removeAt(position)
+            studentAdapter.notifyDataSetChanged()
+
+//            Long클릭은 boolean값을 리턴해줘야함. => 롱클릭 전용 : true , 클릭도 같이 : false
+            return@setOnItemLongClickListener true
         }
     }
 }

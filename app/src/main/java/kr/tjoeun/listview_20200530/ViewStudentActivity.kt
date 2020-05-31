@@ -14,7 +14,7 @@ class ViewStudentActivity : AppCompatActivity() {
         val student = intent.getSerializableExtra("student") as Student
 
         nameTxt.text = student.name
-        ageTxt.text = "${student.getKoreanAge(2020)}세(${student.birthYear})}"
+        ageTxt.text = "${student.getKoreanAge(2020)}세(${student.birthYear})"
 
          if (student.isMale)
          {
@@ -23,6 +23,6 @@ class ViewStudentActivity : AppCompatActivity() {
          else {
              genderTxt.text = "여성"
          }
-
     }
+
 }
