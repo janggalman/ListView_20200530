@@ -2,6 +2,8 @@ package kr.tjoeun.listview_20200530
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.tjoeun.listview_20200530.adapters.StudentAdapter
 import kr.tjoeun.listview_20200530.datas.Student
@@ -48,6 +50,12 @@ class MainActivity : AppCompatActivity() {
         studentListView.adapter =studentAdapter
 
         studentListView.setOnItemClickListener { parent, view, position, id ->
+
+            Log.d("리스트뷰아이템클릭","${position}번 줄 클릭")
+
+            val clickedStudent = students.get(position)
+            Toast.makeText(this, clickedStudent.name , Toast.LENGTH_SHORT)
+
 
         }
     }
