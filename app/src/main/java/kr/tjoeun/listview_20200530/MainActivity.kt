@@ -1,5 +1,6 @@
 package kr.tjoeun.listview_20200530
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -51,11 +52,16 @@ class MainActivity : AppCompatActivity() {
 
         studentListView.setOnItemClickListener { parent, view, position, id ->
 
+//            몇번 줄이 눌렸는지 확인
             Log.d("리스트뷰아이템클릭","${position}번 줄 클릭")
 
+//            빼낸 학생 정보를 이용해서 토스트로 출력
             val clickedStudent = students.get(position)
             Toast.makeText(this, clickedStudent.name , Toast.LENGTH_SHORT)
 
+            val myIntent = Intent(this, ViewStudentActivity::class.java)
+            myIntent.putExtra("student" , clickedStudent)
+            startActivity(myIntent)
 
         }
     }
